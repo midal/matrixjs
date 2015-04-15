@@ -11,6 +11,10 @@ function Matrix(arr, transpose) {
 };
 
 Matrix.prototype.toString = function() {
+    if (this.width === 1 && this.height === 1) {
+        return this.arr.toString();
+    }
+
     var output = "[";
     var width = this.width;
     var height = this.height;
@@ -44,6 +48,10 @@ Matrix.prototype.toArray = function() {
 
 Matrix.prototype.transpose = function() {
     return new Matrix(this.toArray(), true);
+};
+
+Matrix.prototype.copy = function() {
+    return new Matrix(this.toArray());
 };
 
 module.exports = Matrix;
